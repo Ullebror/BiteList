@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
-  apiKey: process.env.firebaseKey,
+  apiKey: process.env.local.firebaseKey,
   authDomain: "shoppingapp-91ahe.firebaseapp.com",
   databaseURL: "https://shoppingapp-91-rtdb.us-west1.firebasedatabase.app",
   projectId: "shoppingapp-91ede",
