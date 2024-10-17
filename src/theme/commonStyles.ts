@@ -16,7 +16,10 @@ const commonStyles = StyleSheet.create({
         fontSize: 36,
         fontWeight: 'bold',
         color: colors.gray.shade400,
-    }
+    },
+    placeholder: {
+        width: 40,
+    },
 
 });
 
