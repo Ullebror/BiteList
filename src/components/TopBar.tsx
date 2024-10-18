@@ -18,8 +18,10 @@ const TopBar = ({ navigation, screenName }: TopBarProps) => {
             <TouchableOpacity onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}>
                 <MaterialCommunityIcons name="menu" size={24} color={colors.gray.shade100} />
             </TouchableOpacity>
-            <Text style={commonStyles.title}>BiteList</Text>
-            <Text>{screenName}</Text>
+            <View style={commonStyles.titleContainer}>
+                <Text style={commonStyles.title}>BiteList</Text>
+                <Text style={commonStyles.screenName}>{screenName}</Text>
+            </View>
             <View style={commonStyles.placeholder} />
         </View>
     );

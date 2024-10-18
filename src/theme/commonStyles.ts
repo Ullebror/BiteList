@@ -12,13 +12,28 @@ const commonStyles = StyleSheet.create({
         borderBottomWidth: 1,
 
     },
+    titleContainer: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center', 
+    },
     title: {
         fontSize: 36,
         fontWeight: 'bold',
         color: colors.gray.shade400,
+        position: 'absolute',
+        top: '50%',
+        transform: [{translateY: -80}],
     },
     placeholder: {
         width: 40,
+    },
+    screenName: {
+        fontSize: 18,
+        color: colors.gray.shade400,
+        position: 'absolute',
+        bottom: -67,
+        alignSelf: 'center',
     },
 
 });
