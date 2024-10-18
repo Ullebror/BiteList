@@ -3,4 +3,6 @@ export type DrawerParamList = {
     Register: undefined;
     Login: undefined;
     Favourites: undefined;
+    Recipe: undefined;
+    ShoppingList: undefined;
 }

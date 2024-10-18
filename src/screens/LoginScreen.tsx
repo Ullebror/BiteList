@@ -1,12 +1,16 @@
-import { StyleSheet, TextInput, Text, View, Button } from 'react-native';
+import { Text, View } from 'react-native';
 import React from 'react';
 import TopBar from '../components/TopBar';
+import { DrawerScreenProps } from '@react-navigation/drawer';
+import { DrawerParamList } from '../types/DrawerParamList';
 
-export default function LoginScreen({ navigation }) {
+type LoginScreenProps = DrawerScreenProps<DrawerParamList, "Login">;
+
+export default function LoginScreen({ navigation }: LoginScreenProps) {
     
     return (
         <View>
-            <TopBar navigation={navigation} />
+            <TopBar navigation={navigation} screenName="Login" />
             <Text> Placeholder text </Text>
             
         </View>
