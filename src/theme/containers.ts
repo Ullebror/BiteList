@@ -21,14 +21,44 @@ const containers = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center', 
     },
+    inputWrapper: {
+        marginBottom: 15,
+        marginHorizontal: 15,
+        shadowColor: colors.gray.shade500,
+        shadowOffset: {
+            width: 0,
+            height: 5,
+        },
+        shadowOpacity: 0.4, 
+        shadowRadius: 4.5, 
+        elevation: 5, 
+        borderRadius: 25, 
+        overflow: 'hidden', 
+    },
     inputs: {
         height: 50,
         borderColor: '#ccc',
         borderWidth: 1,
-        borderRadius: 25,
+        borderRadius: 25, 
         paddingHorizontal: 20,
-        marginVertical: 10,
-      },
+        marginVertical: 0, 
+        backgroundColor: '#fff', 
+    },
+    buttonWrapper: {
+        width: '80%',
+        marginVertical: 10, // Space between buttons
+        marginHorizontal: 15, // Match the margin of your input
+        shadowColor: colors.gray.shade500,
+        shadowOffset: {
+            width: 0,
+            height: 5,
+        },
+        shadowOpacity: 0.4, 
+        shadowRadius: 4.5, 
+        elevation: 5,
+        borderRadius: 50, // Match the button's border radius
+        overflow: 'hidden', // Ensure shadow doesn't spill over edges
+    },
     placeholder: {
         width: 40,
     },

@@ -42,29 +42,36 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
             <Text style={commonStyles.subText}>Login to access your account</Text>
       
             <Text style={[commonStyles.contentText, { marginVertical: 50, marginHorizontal: 12}]}>Email Address</Text>
-            <TextInput
-                style={[commonStyles.inputs, {marginHorizontal: 15}]}
-                placeholder="Enter your email"
-                value={email}
-                onChangeText={setEmail}
-            />
+            <View style={commonStyles.inputWrapper}>
+                <TextInput
+                    style={commonStyles.inputs}
+                    placeholder="Enter your email"
+                    value={email}
+                    onChangeText={setEmail}
+                />
+            </View>
+
       
             <Text style={[commonStyles.contentText, {marginHorizontal: 12}]}>Password</Text>
-            <TextInput
-                style={[commonStyles.inputs, {marginHorizontal: 15}]}
-                placeholder="Enter your password"
-                secureTextEntry
-                value={password}
-                onChangeText={setPassword}
-            />
+            <View style={commonStyles.inputWrapper}>
+                <TextInput
+                    style={commonStyles.inputs}
+                    placeholder="Enter your password"
+                    secureTextEntry
+                    value={password}
+                    onChangeText={setPassword}
+                />
+            </View>
       
             <TouchableOpacity>
                 <Text style={[commonStyles.link, {alignSelf: 'flex-end', marginBottom: 30}]}>Forgot Password?</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={[commonStyles.orange, {alignSelf: 'center'}]} onPress={handleLogin}>
-            <Text style={{ color: 'white' }}>Login</Text>
-            </TouchableOpacity>
+            <View style={[commonStyles.buttonWrapper, {alignSelf: 'center'}]}>
+                <TouchableOpacity style={[commonStyles.orange, {alignSelf: 'center'}]} onPress={handleLogin}>
+                <Text style={{ color: 'white' }}>Login</Text>
+                </TouchableOpacity>
+            </View>
 
             <Text style={commonStyles.orText}>-------------------- Or Sign in With --------------------</Text>
 

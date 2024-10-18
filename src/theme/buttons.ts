@@ -7,7 +7,7 @@ const buttons = StyleSheet.create({
         borderRadius: 50,
         padding: 20,
         alignItems: 'center',
-        width: '80%'
+        width: '99%',
     },
     socialButton: {
         borderRadius: 20,

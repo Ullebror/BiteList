@@ -45,6 +45,16 @@ const texts = StyleSheet.create({
         bottom: -67,
         alignSelf: 'center',
     },
+    errorText: {
+        fontSize: 16,
+        color: colors.red.shade100,
+        alignSelf: 'center',
+    },
+    successText: {
+        fontSize: 16,
+        color: colors.yellow.shade100,
+        alignSelf: 'center',
+    },
 })
 
 export default texts;
