@@ -4,8 +4,7 @@ import colors from './colors';
 const containers = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 20,
-        justifyContent: 'center',
+
     },
     TopContainer: {
         height: 135,
@@ -22,8 +21,22 @@ const containers = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center', 
     },
+    inputs: {
+        height: 50,
+        borderColor: '#ccc',
+        borderWidth: 1,
+        borderRadius: 25,
+        paddingHorizontal: 20,
+        marginVertical: 10,
+      },
     placeholder: {
         width: 40,
+    },
+    socialButtonContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        marginVertical: 10,
+
     },
 })
 
