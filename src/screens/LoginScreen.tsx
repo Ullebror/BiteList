@@ -14,6 +14,7 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
 
+    // Google and Facebook sign-in will be on hold for now.
     const handleGoogleSignIn = () => {
         // Implement your Google sign-in logic here
         console.log('Google Sign-In pressed');
