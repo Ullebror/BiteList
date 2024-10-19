@@ -23,7 +23,7 @@ export default function RegisterScreen({ navigation }: RegisterScreenProps) {
         }
 
         try {
-            await registerUser(email, password);
+            await registerUser(email, password, username);
             setSuccess('Registration successful! Please log in.')
             setError('');
             navigation.navigate('Login');
