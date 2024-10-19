@@ -1,13 +1,12 @@
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
-import { auth } from '../../firebaseConfig';
-import { getDatabase, ref, set } from 'firebase/database';
+import { auth, db } from '../../firebaseConfig';
+import { ref, set } from 'firebase/database';
 
 
 export const registerUser = async (email: string, password: string, username: string) => {
     try {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
-        const db = getDatabase();
         await set(ref(db, 'users/' + user.uid), {
           username,
           email,
