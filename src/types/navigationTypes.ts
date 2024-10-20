@@ -14,6 +14,7 @@ export type DrawerParamList = {
     Favourites: undefined;
     Recipe: undefined;
     ShoppingList: undefined;
+    Profile: undefined;
 }
 
 export type ShoppingListScreenProps = DrawerScreenProps<DrawerParamList, "ShoppingList">;
@@ -27,3 +28,5 @@ export type RecipeScreenProps = DrawerScreenProps<DrawerParamList, "Recipe">;
 export type RegisterScreenProps = DrawerScreenProps<DrawerParamList, "Register">;
 
 export type FavouritesScreenProps = DrawerScreenProps<DrawerParamList, "Favourites">;
+
+export type ProfileScreenProps = DrawerScreenProps<DrawerParamList, "Profile">;
