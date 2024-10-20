@@ -3,7 +3,8 @@ import {
     signInWithEmailAndPassword,
     signOut,
     UserCredential,
-    AuthError
+    AuthError,
+    sendPasswordResetEmail
 } from 'firebase/auth';
 import { auth, db } from '../../firebaseConfig';
 import { ref, set } from 'firebase/database';
@@ -58,5 +59,15 @@ export const logoutUser = async (): Promise<void> => {
     } catch (error) {
         console.error('Logout error: ', error);
         throw error as AuthErrorType;
+    }
+}
+
+export const passwordReset = async (email: string): Promise<void> => {
+    try {
+        await sendPasswordResetEmail(auth, email);  
+    } catch (error) {
+        console.error('Reset password error: ', error);
+        throw error as AuthErrorType;
+
     }
 }
