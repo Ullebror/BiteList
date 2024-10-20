@@ -4,7 +4,7 @@ import HomeScreen from '../screens/HomeScreen';
 import LoginScreen from '../screens/LoginScreen';
 import RegisterScreen from '../screens/RegisterScreen';
 import FavouritesScreen from '../screens/FavouritesScreen';
-import { DrawerParamList } from '../types/DrawerParamList';
+import { DrawerParamList } from '../types/navigationTypes';
 import RecipeScreen from '../screens/RecipeScreen';
 import ShoppingListScreen from '../screens/ShoppingListScreen'
 
