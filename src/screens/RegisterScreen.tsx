@@ -57,7 +57,13 @@ export default function RegisterScreen({ navigation }: RegisterScreenProps) {
             <Text style={commonStyles.titleText}>Create an Account</Text>
             {error ? <Text style={commonStyles.errorText}>{error}</Text> : null}
 
-            <Text style={[commonStyles.contentText, { marginVertical: 50, marginHorizontal: 12}]}>Email Address</Text>
+            <Text style={[
+                commonStyles.contentText, 
+                { marginVertical: 50, marginHorizontal: 12}
+                ]}
+            >
+                Email Address
+            </Text>
             <View style={commonStyles.inputWrapper}>
                 <TextInput
                     style={commonStyles.inputs}
@@ -69,7 +75,9 @@ export default function RegisterScreen({ navigation }: RegisterScreenProps) {
                 />
             </View>
 
-            <Text style={[commonStyles.contentText, {marginHorizontal: 12}]}>Username</Text>
+            <Text style={[commonStyles.contentText, {marginHorizontal: 12}]}>
+                Username
+            </Text>
             <View style={commonStyles.inputWrapper}>
                 <TextInput
                     style={commonStyles.inputs}
@@ -79,7 +87,9 @@ export default function RegisterScreen({ navigation }: RegisterScreenProps) {
                 />
             </View>
 
-            <Text style={[commonStyles.contentText, {marginHorizontal: 12}]}>Password</Text>
+            <Text style={[commonStyles.contentText, {marginHorizontal: 12}]}>
+                Password
+            </Text>
             <View style={commonStyles.inputWrapper}>
                 <TextInput
                     style={commonStyles.inputs}
@@ -92,7 +102,9 @@ export default function RegisterScreen({ navigation }: RegisterScreenProps) {
             </View>
 
 
-            <Text style={[commonStyles.contentText, {marginHorizontal: 12}]}>Confirm Password</Text>
+            <Text style={[commonStyles.contentText, {marginHorizontal: 12}]}>
+                Confirm Password
+            </Text>
             <View style={commonStyles.inputWrapper} >
                 <TextInput
                     style={commonStyles.inputs}
@@ -105,14 +117,28 @@ export default function RegisterScreen({ navigation }: RegisterScreenProps) {
             </View>
 
             <View style={[commonStyles.buttonWrapper, {alignSelf: 'center'}]}>
-                <TouchableOpacity style={[commonStyles.orange, {alignSelf: 'center'}]} onPress={handleRegister}>
+                <TouchableOpacity style={[
+                    commonStyles.orange, {alignSelf: 'center'}]} 
+                    onPress={handleRegister}
+                >
                     <Text style={{ color: 'white' }}>Register</Text>
                 </TouchableOpacity>
             </View>
            
 
-            <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: 20 }}>
-                <Text style={[commonStyles.contentText, {alignSelf: 'center'}]}>Already have an account?{' '}</Text>
+            <View style={{ 
+                flexDirection: 'row', 
+                justifyContent: 'center', 
+                marginTop: 20 
+                }}
+            >
+                <Text style={[
+                    commonStyles.contentText, 
+                    {alignSelf: 'center'}
+                    ]}
+                >
+                    Already have an account?{' '}
+                </Text>
                 <TouchableOpacity onPress={() => navigation.navigate('Login')}>
                     <Text style={commonStyles.link}>Log in</Text>
                 </TouchableOpacity>
