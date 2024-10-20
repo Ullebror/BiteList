@@ -25,6 +25,8 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
     const handleLogin = async (): Promise<void> => {
         try {
             await loginUser(email, password);
+            setEmail('')
+            setPassword('');
             navigation.navigate('Home');
         } catch (error: unknown) {
             setError('Login failed. Please check your credentials.')
@@ -55,6 +57,8 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
                 <TextInput
                     style={commonStyles.inputs}
                     placeholder="Enter your email"
+                    keyboardType="email-address"
+                    autoCapitalize="none"
                     value={email}
                     onChangeText={handleEmailChange}
                 />
@@ -67,6 +71,7 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
                     style={commonStyles.inputs}
                     placeholder="Enter your password"
                     secureTextEntry
+                    autoCapitalize="none"
                     value={password}
                     onChangeText={handlePasswordChange}
                 />

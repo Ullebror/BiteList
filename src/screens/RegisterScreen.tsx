@@ -12,12 +12,13 @@ export default function RegisterScreen({ navigation }: RegisterScreenProps) {
     const [password, setPassword] = useState<string>('');
     const [confirmPassword, setConfirmPassword] = useState<string>('');
     const [error, setError] = useState<string | null>(null);
-    const [success, setSuccess] = useState<string | null>(null);
 
     const handleRegister = async (): Promise<void> => {
         //Checks if passwords match
         if (password !== confirmPassword) {
             setError('Passwords do not match');
+            setPassword('');
+            setConfirmPassword('');
             return;
         }
         //Password strength check
@@ -29,14 +30,21 @@ export default function RegisterScreen({ navigation }: RegisterScreenProps) {
 
         try {
             await registerUser(email, password, username);
-            setSuccess('Registration successful! Please log in.')
+            setEmail('');
+            setUsername('');
+            setPassword('');
+            setConfirmPassword('');
             setError(null);
             navigation.navigate('Login');
         } catch (error: unknown) {
             if (error instanceof Error) {
                 setError(error.message);
+                setPassword('');
+                setConfirmPassword('');
             } else {
                 setError('Registration failed. Please try again');
+                setPassword('');
+                setConfirmPassword('');
             }
 
             console.error(error);
@@ -48,7 +56,6 @@ export default function RegisterScreen({ navigation }: RegisterScreenProps) {
             <TopBar navigation={navigation} screenName='Register'/>
             <Text style={commonStyles.titleText}>Create an Account</Text>
             {error ? <Text style={commonStyles.errorText}>{error}</Text> : null}
-            {success ? <Text style={commonStyles.successText}>{success}</Text> : null}
 
             <Text style={[commonStyles.contentText, { marginVertical: 50, marginHorizontal: 12}]}>Email Address</Text>
             <View style={commonStyles.inputWrapper}>
@@ -78,6 +85,7 @@ export default function RegisterScreen({ navigation }: RegisterScreenProps) {
                     style={commonStyles.inputs}
                     placeholder="Enter your password"
                     secureTextEntry
+                    autoCapitalize="none"
                     value={password}
                     onChangeText={setPassword}
                 />
@@ -89,6 +97,7 @@ export default function RegisterScreen({ navigation }: RegisterScreenProps) {
                 <TextInput
                     style={commonStyles.inputs}
                     placeholder="Confirm your password"
+                    autoCapitalize="none"                    
                     secureTextEntry
                     value={confirmPassword}
                     onChangeText={setConfirmPassword}
