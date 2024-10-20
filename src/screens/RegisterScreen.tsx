@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { registerUser } from '../api/authService';
 import TopBar from '../components/TopBar';
 import { RegisterScreenProps } from '../types/navigationTypes';
+import { checkPasswordStrength } from '../utils/checkPasswordStrength';
 import commonStyles from '../theme/commonStyles';
 
 export default function RegisterScreen({ navigation }: RegisterScreenProps) {
@@ -14,15 +15,22 @@ export default function RegisterScreen({ navigation }: RegisterScreenProps) {
     const [success, setSuccess] = useState<string | null>(null);
 
     const handleRegister = async (): Promise<void> => {
+        //Checks if passwords match
         if (password !== confirmPassword) {
             setError('Passwords do not match');
+            return;
+        }
+        //Password strength check
+        const passwordStrength = await checkPasswordStrength(password);
+        if (passwordStrength !== 'Valid') {
+            setError(passwordStrength);
             return;
         }
 
         try {
             await registerUser(email, password, username);
             setSuccess('Registration successful! Please log in.')
-            setError('');
+            setError(null);
             navigation.navigate('Login');
         } catch (error: unknown) {
             if (error instanceof Error) {
@@ -47,6 +55,8 @@ export default function RegisterScreen({ navigation }: RegisterScreenProps) {
                 <TextInput
                     style={commonStyles.inputs}
                     placeholder="Enter your email"
+                    keyboardType="email-address"
+                    autoCapitalize="none"
                     value={email}
                     onChangeText={setEmail}
                 />
