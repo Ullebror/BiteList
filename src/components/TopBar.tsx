@@ -1,16 +1,12 @@
 import { View, Text, TouchableOpacity } from 'react-native';
 import React from 'react';
 import commonStyles from '../theme/commonStyles';
-import { DrawerActions, NavigationProp } from '@react-navigation/native';
+import { DrawerActions } from '@react-navigation/native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { DrawerParamList } from '../types/navigationTypes';
+import { TopBarProps } from '../types/navigationTypes';
 import colors from '../theme/colors';
 
-type TopBarProps = {
-    navigation: NavigationProp<DrawerParamList>;
-    screenName: string;
-    
-}
+
 
 const TopBar = ({ navigation, screenName }: TopBarProps) => {
     return (

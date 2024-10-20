@@ -6,12 +6,10 @@ import { loginUser } from '../api/authService';
 import commonStyles from '../theme/commonStyles';
 import { SocialIcon } from 'react-native-elements';
 
-type ErrorState = string | null;
-
 export default function LoginScreen({ navigation }: LoginScreenProps) {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
-    const [error, setError] = useState<ErrorState>(null);
+    const [error, setError] = useState<string | null>(null);
 
     // Google and Facebook sign-in will be on hold for now. Change typing if continuing
     const handleGoogleSignIn = (): void => {

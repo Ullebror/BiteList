@@ -10,10 +10,10 @@ export default function RegisterScreen({ navigation }: RegisterScreenProps) {
     const [username, setUsername] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [confirmPassword, setConfirmPassword] = useState<string>('');
-    const [error, setError] = useState<string>('');
-    const [success, setSuccess] = useState<string>('');
+    const [error, setError] = useState<string | null>(null);
+    const [success, setSuccess] = useState<string | null>(null);
 
-    const handleRegister = async () => {
+    const handleRegister = async (): Promise<void> => {
         if (password !== confirmPassword) {
             setError('Passwords do not match');
             return;
@@ -24,8 +24,13 @@ export default function RegisterScreen({ navigation }: RegisterScreenProps) {
             setSuccess('Registration successful! Please log in.')
             setError('');
             navigation.navigate('Login');
-        } catch (error) {
-            setError('Registration failed. Please try again');
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+                setError(error.message);
+            } else {
+                setError('Registration failed. Please try again');
+            }
+
             console.error(error);
         }
     }
