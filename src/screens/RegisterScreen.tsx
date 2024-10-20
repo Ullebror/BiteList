@@ -2,19 +2,16 @@ import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 import { registerUser } from '../api/authService';
 import TopBar from '../components/TopBar';
-import { DrawerScreenProps } from '@react-navigation/drawer';
-import { DrawerParamList } from '../types/DrawerParamList';
+import { RegisterScreenProps } from '../types/navigationTypes';
 import commonStyles from '../theme/commonStyles';
 
-type RegisterScreenProps = DrawerScreenProps<DrawerParamList, 'Register'>
-
 export default function RegisterScreen({ navigation }: RegisterScreenProps) {
-    const [email, setEmail] = useState('');
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
-    const [error, setError] = useState('');
-    const [success, setSuccess] = useState('');
+    const [email, setEmail] = useState<string>('');
+    const [username, setUsername] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
+    const [confirmPassword, setConfirmPassword] = useState<string>('');
+    const [error, setError] = useState<string>('');
+    const [success, setSuccess] = useState<string>('');
 
     const handleRegister = async () => {
         if (password !== confirmPassword) {

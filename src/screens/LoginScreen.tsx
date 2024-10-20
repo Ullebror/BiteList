@@ -1,13 +1,11 @@
 import { Text, View, TextInput, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 import TopBar from '../components/TopBar';
-import { DrawerScreenProps } from '@react-navigation/drawer';
-import { DrawerParamList } from '../types/DrawerParamList';
+import { LoginScreenProps } from '../types/navigationTypes';
 import { loginUser } from '../api/authService';
 import commonStyles from '../theme/commonStyles';
 import { SocialIcon } from 'react-native-elements';
 
-type LoginScreenProps = DrawerScreenProps<DrawerParamList, "Login">;
 type ErrorState = string | null;
 
 export default function LoginScreen({ navigation }: LoginScreenProps) {

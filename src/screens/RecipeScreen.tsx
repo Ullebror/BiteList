@@ -1,10 +1,7 @@
 import { View } from 'react-native';
 import React from 'react';
 import TopBar from '../components/TopBar';
-import { DrawerScreenProps } from '@react-navigation/drawer';
-import { DrawerParamList } from '../types/DrawerParamList';
-
-type RecipeScreenProps = DrawerScreenProps<DrawerParamList, "Recipe">
+import { RecipeScreenProps } from '../types/navigationTypes';
 
 export default function RecipeScreen({ navigation }: RecipeScreenProps) {
 
