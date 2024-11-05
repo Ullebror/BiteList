@@ -19,10 +19,10 @@ export const registerUser = async (
 ): Promise<UserCredential> => {
     try {
         const userCredential = await createUserWithEmailAndPassword(
-                                    auth,
-                                    email,
-                                    password
-                                );
+            auth,
+            email,
+            password
+        );
         const user = userCredential.user;
         await set(ref(db, 'users/' + user.uid), {
           username,
@@ -42,10 +42,10 @@ export const loginUser = async (
 ): Promise<UserCredential> => {
     try {
         const userCredential = await signInWithEmailAndPassword(
-                                    auth,
-                                    email,
-                                    password
-                                );
+            auth,
+            email,
+            password
+        );
         return userCredential;
     } catch (error) {
         console.error('Login error: ', error);
@@ -70,4 +70,4 @@ export const passwordReset = async (email: string): Promise<void> => {
         throw error as AuthErrorType;
 
     }
-}
+};
