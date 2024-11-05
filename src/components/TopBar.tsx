@@ -11,8 +11,14 @@ import colors from '../theme/colors';
 const TopBar = ({ navigation, screenName }: TopBarProps) => {
     return (
         <View style={commonStyles.TopContainer}>
-            <TouchableOpacity onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}>
-                <MaterialCommunityIcons name="menu" size={24} color={colors.gray.shade100} />
+            <TouchableOpacity 
+                onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
+            >
+                <MaterialCommunityIcons 
+                    name="menu" 
+                    size={24} 
+                    color={colors.gray.shade100} 
+                />
             </TouchableOpacity>
             <View style={commonStyles.titleContainer}>
                 <Text style={commonStyles.mainTitle}>BiteList</Text>
