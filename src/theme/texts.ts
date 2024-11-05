@@ -55,6 +55,10 @@ const texts = StyleSheet.create({
         color: colors.yellow.shade100,
         alignSelf: 'center',
     },
+    loadingText: {
+        textAlign: 'center',
+        marginVertical: 20,
+    },
 })
 
 export default texts;

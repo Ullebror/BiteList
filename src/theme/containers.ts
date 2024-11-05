@@ -68,6 +68,11 @@ const containers = StyleSheet.create({
         marginVertical: 10,
 
     },
+    searchBar: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: 20,
+    },
 })
 
 export default containers;
