@@ -13,7 +13,7 @@ export type DrawerParamList = {
     Login: undefined;
     Favourites: undefined;
     Recipe: { recipe: any };
-    ShoppingList: undefined;
+    ShoppingList: { ingredients: any, label: any };
     Profile: undefined;
 }
 
