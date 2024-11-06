@@ -14,11 +14,15 @@ export const searchRecipes = async (query: string) => {
                 app_key: appKey,
             },
         });
+
         return response.data.hits.map((hit: any) => ({
             label: hit.recipe.label,
-            image: hit.recipe.images.THUMBNAIL.url,
+            image: hit.recipe.image,
             uri: hit.recipe.uri,
+            url: hit.recipe.url,
+            ingredients: hit.recipe.ingredientLines,
         }));
+        
     } catch (error) {
         console.error("Error fetchin recipes:", error);
         return [];
