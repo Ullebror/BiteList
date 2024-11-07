@@ -12,7 +12,7 @@ import React, { useState } from 'react';
 import TopBar from '../components/TopBar';
 import { LoginScreenProps } from '../types/navigationTypes';
 import { loginUser, passwordReset } from '../api/authService';
-import commonStyles from '../theme/commonStyles';
+import styles from '../theme/styles';
 import { SocialIcon } from 'react-native-elements';
 
 export default function LoginScreen({ navigation }: LoginScreenProps) {
@@ -77,21 +77,21 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
     
     return (
 
-        <View style={commonStyles.container}>
+        <View style={styles.container}>
             <TopBar navigation={navigation} screenName="Login" />
-            <Text style={commonStyles.titleText}>Welcome Back</Text>
-            <Text style={commonStyles.subText}>Login to access your account</Text>
+            <Text style={styles.titleText}>Welcome Back</Text>
+            <Text style={styles.subText}>Login to access your account</Text>
             
       
             <Text style={[
-                commonStyles.contentText,
+                styles.contentText,
                 { marginVertical: 50, marginHorizontal: 12}]}
             >
                 Email Address
             </Text>
-            <View style={commonStyles.inputWrapper}>
+            <View style={styles.inputWrapper}>
                 <TextInput
-                    style={commonStyles.inputs}
+                    style={styles.inputs}
                     placeholder="Enter your email"
                     keyboardType="email-address"
                     autoCapitalize="none"
@@ -102,14 +102,14 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
 
       
             <Text style={[
-                commonStyles.contentText,
+                styles.contentText,
                 {marginHorizontal: 12}]}
             >
                 Password
             </Text>
-            <View style={commonStyles.inputWrapper}>
+            <View style={styles.inputWrapper}>
                 <TextInput
-                    style={commonStyles.inputs}
+                    style={styles.inputs}
                     placeholder="Enter your password"
                     secureTextEntry
                     autoCapitalize="none"
@@ -118,20 +118,20 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
                 />
             </View>
             {error ? (
-                <Text style={commonStyles.errorText}>{error}</Text>
+                <Text style={styles.errorText}>{error}</Text>
             ) : null}
       
             <TouchableOpacity onPress={handleForgotPassword}>
                 <Text style={[
-                    commonStyles.link,
+                    styles.link,
                     {alignSelf: 'flex-end', marginBottom: 30}
                     ]}
                 >Forgot Password?</Text>
             </TouchableOpacity>
 
-            <View style={[commonStyles.buttonWrapper, {alignSelf: 'center'}]}>
+            <View style={[styles.buttonWrapper, {alignSelf: 'center'}]}>
                 <TouchableOpacity style={[
-                    commonStyles.orange,
+                    styles.orangeButton,
                     {alignSelf: 'center'}]}
                     onPress={handleLogin}
                 >
@@ -139,24 +139,24 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
                 </TouchableOpacity>
             </View>
 
-            <Text style={commonStyles.orText}
+            <Text style={styles.orText}
             >
                 -------------------- Or Sign in With --------------------
             </Text>
 
-            <View style={commonStyles.socialButtonContainer}>
+            <View style={styles.socialButtonContainer}>
                 <SocialIcon
                     title="Sign In With Google"
                     button
                     type="google"
-                    style={commonStyles.socialButton}
+                    style={styles.socialButton}
                     onPress={handleGoogleSignIn}
                 />
                 <SocialIcon
                     title="Sign In With Facebook"
                     button
                     type="facebook"
-                    style={commonStyles.socialButton}
+                    style={styles.socialButton}
                     onPress={handleFacebookSignIn}
                 />
             </View>
@@ -168,7 +168,7 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
                 }}
             >
                 <Text style={[
-                    commonStyles.contentText,
+                    styles.contentText,
                     {alignSelf: 'center'}
                     ]}
                 >
@@ -177,7 +177,7 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
                 <TouchableOpacity 
                     onPress={() => navigation.navigate('Register')}
                 >
-                    <Text style={commonStyles.link}>Join us</Text>
+                    <Text style={styles.link}>Join us</Text>
                 </TouchableOpacity>
             </View>
             <Modal
@@ -187,16 +187,16 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
                 onRequestClose={() => setModalVisible(false)}
             >
                 <TouchableWithoutFeedback onPress={() => setModalVisible(false)}>
-                    <View style={commonStyles.modalContainer}>
-                        <View style={commonStyles.modalContent}>
-                            <Text style={commonStyles.modalTitle}>
+                    <View style={styles.modalContainer}>
+                        <View style={styles.modalContent}>
+                            <Text style={styles.modalTitle}>
                                 Reset Password
                             </Text>
-                            <Text style={commonStyles.modalText}>
+                            <Text style={styles.modalText}>
                                 Enter your email address:
                             </Text>
                             <TextInput
-                                style={commonStyles.inputs}
+                                style={styles.inputs}
                                 placeholder="Email"
                                 keyboardType="email-address"
                                 autoCapitalize="none"
@@ -204,7 +204,7 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
                                 onChangeText={setResetEmail}
                             />
                             <TouchableOpacity style={[
-                                commonStyles.orange,
+                                styles.orangeButton,
                                 {marginVertical: 10}
                                 ]}
                                 onPress={handleResetPassword}
@@ -214,7 +214,7 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
                                     </Text>
                             </TouchableOpacity>
                             <TouchableOpacity onPress={() => setModalVisible(false)}>
-                                <Text style={commonStyles.link}>Cancel</Text>
+                                <Text style={styles.link}>Cancel</Text>
                             </TouchableOpacity>
                         </View>
                     </View>

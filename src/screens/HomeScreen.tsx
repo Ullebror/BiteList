@@ -11,7 +11,7 @@ import React, { useState } from 'react';
 import TopBar from '../components/TopBar';
 import { HomeScreenProps } from '../types/navigationTypes';
 import { searchRecipes } from '../api/recipeService';
-import commonStyles from '../theme/commonStyles';
+import styles from '../theme/styles';
 
 export default function HomeScreen({ navigation }: HomeScreenProps) {
     const [query, setQuery] = useState('');
@@ -86,19 +86,21 @@ export default function HomeScreen({ navigation }: HomeScreenProps) {
     return (
         <View>
             <TopBar navigation={navigation} screenName="Home" />
-            <View style={commonStyles.searchBar}>
+            <View style={styles.searchBarWrapper}>
                 <TextInput
-                    style={commonStyles.inputs}
+                    style={[styles.inputs, {flex: 1}]}
                     placeholder="Search for a recipe..."
                     value={query}
                     onChangeText={setQuery}
                 />
-                <Button title="Search" onPress={handleSearch} />
+                <TouchableOpacity style={[styles.searchButton, {width: '20%'}]} onPress={handleSearch}>
+                    <Text style={{color: 'white'}}>Search</Text>
+                </TouchableOpacity>
             </View>
 
             {/* Loading and Results */}
             {isLoading ? (
-                <Text style={commonStyles.loadingText}>Loading...</Text>
+                <Text style={styles.loadingText}>Loading...</Text>
             ) : (
                 <FlatList
                     data={groupedRecipes}

@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity, Image, Linking, ScrollView } from 'react-
 import React from 'react';
 import TopBar from '../components/TopBar';
 import { RecipeScreenProps } from '../types/navigationTypes';
-import commonStyles from '../theme/commonStyles';
+import styles from '../theme/styles';
 
 export default function RecipeScreen({ navigation, route }: RecipeScreenProps) {
     const { recipe } = route.params;
@@ -13,7 +13,6 @@ export default function RecipeScreen({ navigation, route }: RecipeScreenProps) {
     const handleAddToShoppingList = () => {
         navigation.navigate('ShoppingList', {ingredients: recipe.ingredients, label: recipe.label });
     }
-    console.log(recipe);
 
     const getDomainName = (url: string) => {
         try {
@@ -31,13 +30,13 @@ export default function RecipeScreen({ navigation, route }: RecipeScreenProps) {
                 <View style={{flexDirection: 'row'}}>
                     <Image source={{ uri: recipe.image }} style={{width: 200, height: 200 }} />
                     <View style={{padding: 20}}>
-                        <TouchableOpacity style={commonStyles.orange} onPress={handleAddToShoppingList}>
+                        <TouchableOpacity style={styles.orangeButton} onPress={handleAddToShoppingList}>
                             <Text>Create Shopping List</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
                 
-                <Text style={commonStyles.titleText}>{recipe.label}</Text>
+                <Text style={styles.titleText}>{recipe.label}</Text>
                 <TouchableOpacity onPress={handleOpenOutsideSource}>
                     <Text>View Full Recipe on {getDomainName(recipe.url)} </Text>
                 </TouchableOpacity>
