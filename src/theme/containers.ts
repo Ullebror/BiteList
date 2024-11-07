@@ -68,10 +68,22 @@ const containers = StyleSheet.create({
         marginVertical: 10,
 
     },
-    searchBar: {
+    searchBarWrapper: {
+        marginTop: 5,
+        marginBottom: 15,
+        marginHorizontal: 15,
         flexDirection: 'row',
-        alignItems: 'center',
-        marginBottom: 20,
+        width: '95%',
+        shadowColor: colors.gray.shade500,
+        shadowOffset: {
+            width: 0,
+            height: 5,
+        },
+        shadowOpacity: 0.4, 
+        shadowRadius: 4.5, 
+        elevation: 5, 
+        borderRadius: 25, 
+        overflow: 'hidden', 
     },
 })
 

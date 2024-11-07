@@ -2,12 +2,18 @@ import { StyleSheet } from 'react-native';
 import colors from './colors';
 
 const buttons = StyleSheet.create({
-    orange: {
+    orangeButton: {
         backgroundColor: colors.orange.shade100,
         borderRadius: 50,
         padding: 20,
         alignItems: 'center',
         width: '99%',
+    },
+    searchButton: {
+        backgroundColor: colors.orange.shade100,
+        borderRadius: 50,
+        padding: 20,
+        alignItems: 'center',
     },
     socialButton: {
         borderRadius: 20,

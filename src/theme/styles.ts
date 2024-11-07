@@ -7,11 +7,11 @@ import modals from './modals';
 
 
 
-const commonStyles = StyleSheet.create({
+const styles = StyleSheet.create({
     ...texts,
     ...buttons,
     ...containers,
     ...modals,
 });
 
-export default commonStyles;
+export default styles;
