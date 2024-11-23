@@ -33,7 +33,8 @@ export default function HomeScreen({ navigation }: HomeScreenProps) {
             ingredients: recipe.ingredients,
             label: recipe.label,
             image: recipe.image,
-            url: recipe.url
+            url: recipe.url,
+            uri: recipe.uri,
         });
     };
 

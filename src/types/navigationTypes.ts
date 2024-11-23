@@ -12,7 +12,7 @@ export type DrawerParamList = {
     Register: undefined;
     Login: undefined;
     Favourites: undefined;
-    Recipe: { ingredients: string[], label: string, image: string, url: string };
+    Recipe: { ingredients: string[], label: string, image: string, url: string, uri: string };
     ShoppingList: { ingredients?: string[], label?: string };
     Profile: undefined;
 }
