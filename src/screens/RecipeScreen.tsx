@@ -38,13 +38,15 @@ export default function RecipeScreen({ navigation, route }: RecipeScreenProps) {
     return (
         <View>
             <TopBar navigation={navigation} screenName='Recipe'/>
-            <TouchableOpacity onPress={toggleFavorite} style={{ paddingLeft: 10 }}>
-                            <Ionicons
-                                name={isFavorited ? "star" : "star-outline"} // Filled or outlined star
-                                size={50}
-                                style={styles.favourited} // Filled yellow or gray outline
-                            />
-                        </TouchableOpacity>
+            {isLoggedIn && (
+                <TouchableOpacity onPress={toggleFavorite} style={{ paddingLeft: 10 }}>
+                    <Ionicons
+                        name={isFavorited ? "star" : "star-outline"} // Filled or outlined star
+                        size={50}
+                        style={styles.favourited} // Filled yellow or gray outline
+                    />
+                </TouchableOpacity>
+            )}
             <ScrollView contentContainerStyle={{ padding: 20 }}>
                 <View style={{flexDirection: 'row'}}>
                     <Image source={{ uri: image }} style={{width: 200, height: 200 }} />
