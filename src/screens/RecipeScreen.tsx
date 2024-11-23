@@ -19,7 +19,7 @@ export default function RecipeScreen({ navigation, route }: RecipeScreenProps) {
     useEffect(() => {
         if (user) {
             const checkFavoriteStatus = async () => {
-                const favorited = await isRecipeFavorited(user.uid, uri);
+                const favorited = await isRecipeFavorited(user.uid, label);
                 setIsFavorited(favorited);
             };
             checkFavoriteStatus();
@@ -50,9 +50,9 @@ export default function RecipeScreen({ navigation, route }: RecipeScreenProps) {
         if (user) {
             try {
                 if (isFavorited) {
-                    await removeFromFavorites(user.uid, uri);
+                    await removeFromFavorites(user.uid, label);
                 } else {
-                    await addToFavorites(user.uid, uri);
+                    await addToFavorites(user.uid, label, uri);
                 }
                 setIsFavorited(!isFavorited);
             } catch (error) {

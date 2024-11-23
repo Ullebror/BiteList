@@ -29,3 +29,34 @@ export const searchRecipes = async (query: string): Promise<Recipe[]> => {
         return [];
     }
 };
+
+export const fetchFavoriteRecipes = async (uris: string[]): Promise<Recipe[]> => {
+    try {
+        if (uris.length === 0) return [];
+        
+        let url = `${apiUrl}/by-uri?type=public&app_id=${appId}&app_key=${appKey}`;
+
+        // Add each URI as a separate query parameter
+        uris.forEach((uri, index) => {
+            url += `&uri=${encodeURIComponent(uri)}`;
+        });
+
+        console.log("Fetching with URL:", url);
+
+        // Send the request to the Edamam API
+        const response = await axios.get(url);
+
+        console.log("Edamam API Response:", response.data);
+
+        return response.data.hits.map((hit: RecipeHit): Recipe => ({
+            label: hit.recipe.label,
+            image: hit.recipe.image,
+            uri: hit.recipe.uri,
+            url: hit.recipe.url,
+            ingredients: hit.recipe.ingredientLines,
+        }));
+    } catch (error) {
+        console.error("Error fetching favorites from edamam: ", error);
+        return [];
+    }
+}

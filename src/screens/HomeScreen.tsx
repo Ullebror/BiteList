@@ -71,7 +71,7 @@ export default function HomeScreen({ navigation }: HomeScreenProps) {
     };
 
     // Function to render a row of two items
-    const renderRow = ({ item }: { item: any[] }) => {
+    const renderRow = ({ item }: { item: Recipe[] }) => {
         return (
             <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                 {item.map((recipe, index) => (
