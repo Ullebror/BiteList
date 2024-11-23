@@ -38,6 +38,9 @@ const buttons = StyleSheet.create({
         marginBottom: 5,
 
     },
+    favourited: {
+        color: colors.orange.shade200,
+    }
 })
 
 export default buttons;

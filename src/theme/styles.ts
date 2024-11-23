@@ -4,9 +4,6 @@ import buttons from './buttons';
 import containers from './containers';
 import modals from './modals';
 
-
-
-
 const styles = StyleSheet.create({
     ...texts,
     ...buttons,
