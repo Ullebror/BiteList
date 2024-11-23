@@ -1,20 +1,25 @@
 import { View, Text, TouchableOpacity, Image, Linking, ScrollView } from 'react-native';
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import TopBar from '../components/TopBar';
 import { Ionicons } from '@expo/vector-icons';
 import { RecipeScreenProps } from '../types/navigationTypes';
+import { AuthContext } from '../context/AuthContext';
 import styles from '../theme/styles';
 
 export default function RecipeScreen({ navigation, route }: RecipeScreenProps) {
     const { ingredients, label, image, url } = route.params;
     const [isFavorited, setIsFavorited] = useState(false);
-
+    const { isLoggedIn } = useContext(AuthContext);
+ 
     const handleOpenOutsideSource = () => {
         Linking.openURL(url);
     }
     
     const handleAddToShoppingList = () => {
-        navigation.navigate('ShoppingList', {ingredients: ingredients, label: label });
+        navigation.navigate(
+            'ShoppingList',
+            {ingredients: ingredients, label: label}
+        );
     }
 
     const getDomainName = (url: string) => {
