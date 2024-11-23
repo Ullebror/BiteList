@@ -12,8 +12,8 @@ export type DrawerParamList = {
     Register: undefined;
     Login: undefined;
     Favourites: undefined;
-    Recipe: { recipe: any };
-    ShoppingList: { ingredients?: any, label?: any };
+    Recipe: { ingredients: string[], label: string, image: string, url: string };
+    ShoppingList: { ingredients?: string[], label?: string };
     Profile: undefined;
 }
 

@@ -6,15 +6,15 @@ import { RecipeScreenProps } from '../types/navigationTypes';
 import styles from '../theme/styles';
 
 export default function RecipeScreen({ navigation, route }: RecipeScreenProps) {
-    const { recipe } = route.params;
+    const { ingredients, label, image, url } = route.params;
     const [isFavorited, setIsFavorited] = useState(false);
 
     const handleOpenOutsideSource = () => {
-        Linking.openURL(recipe.url);
+        Linking.openURL(url);
     }
     
     const handleAddToShoppingList = () => {
-        navigation.navigate('ShoppingList', {ingredients: recipe.ingredients, label: recipe.label });
+        navigation.navigate('ShoppingList', {ingredients: ingredients, label: label });
     }
 
     const getDomainName = (url: string) => {
@@ -42,7 +42,7 @@ export default function RecipeScreen({ navigation, route }: RecipeScreenProps) {
                         </TouchableOpacity>
             <ScrollView contentContainerStyle={{ padding: 20 }}>
                 <View style={{flexDirection: 'row'}}>
-                    <Image source={{ uri: recipe.image }} style={{width: 200, height: 200 }} />
+                    <Image source={{ uri: image }} style={{width: 200, height: 200 }} />
                     <View style={{padding: 20}}>
 
                         <TouchableOpacity style={[styles.orangeButton, {width: '100%'}]} onPress={handleAddToShoppingList}>
@@ -51,13 +51,13 @@ export default function RecipeScreen({ navigation, route }: RecipeScreenProps) {
                     </View>
                 </View>
                 
-                <Text style={styles.titleText}>{recipe.label}</Text>
+                <Text style={styles.titleText}>{label}</Text>
                 <TouchableOpacity onPress={handleOpenOutsideSource}>
-                    <Text style={[styles.link, {fontSize: 16}]}>View Full Recipe on {getDomainName(recipe.url)} </Text>
+                    <Text style={[styles.link, {fontSize: 16}]}>View Full Recipe on {getDomainName(url)} </Text>
                 </TouchableOpacity>
                 <Text style={[styles.subText, {textAlign: 'left', paddingTop: 20}]}>Ingredients:</Text>
-                {recipe.ingredients && recipe.ingredients.length > 0 ? (
-                        recipe.ingredients.map((ingredient: string, index: number) => (
+                {ingredients && ingredients.length > 0 ? (
+                        ingredients.map((ingredient: string, index: number) => (
                             <Text style={styles.contentText} key={index}>{ingredient}</Text>
                         ))
                     ) : (
