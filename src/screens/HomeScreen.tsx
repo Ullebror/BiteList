@@ -1,13 +1,13 @@
 import {  
     View, 
     TextInput, 
-    Button, 
     FlatList, 
     Text, 
     TouchableOpacity, 
     Image,
 } from 'react-native';
 import React, { useState } from 'react';
+import { Recipe } from '../types/ParameterTypes';
 import TopBar from '../components/TopBar';
 import { HomeScreenProps } from '../types/navigationTypes';
 import { searchRecipes } from '../api/recipeService';
@@ -15,23 +15,29 @@ import styles from '../theme/styles';
 
 export default function HomeScreen({ navigation }: HomeScreenProps) {
     const [query, setQuery] = useState('');
-    const [recipes, setRecipes] = useState<any[]>([]);
+    const [recipes, setRecipes] = useState<Recipe[]>([]);
     const [isLoading, setIsLoading] = useState(false);
 
     const handleSearch = async () => {
         setIsLoading(true);
         const results = await searchRecipes(query);
-        const uniqueRecipes = Array.from(new Set(results.map(recipe => recipe.uri)))
-            .map(uri => results.find(recipe => recipe.uri === uri));
+        const uniqueRecipes = Array
+            .from(new Set(results.map((recipe: Recipe) => recipe.uri)))
+            .map(uri => results.find(recipe => recipe.uri === uri) as Recipe);
         setRecipes(uniqueRecipes);
         setIsLoading(false);
     };
 
-    const navigateToRecipe = (recipe: any) => {
-        navigation.navigate('Recipe', { recipe });
+    const navigateToRecipe = (recipe: Recipe) => {
+        navigation.navigate('Recipe', { 
+            ingredients: recipe.ingredients,
+            label: recipe.label,
+            image: recipe.image,
+            url: recipe.url
+        });
     };
 
-    const renderItem = ({ item }: { item: any }) => {
+    const renderItem = ({ item }: { item: Recipe }) => {
         return (
             <TouchableOpacity 
                 onPress={() => navigateToRecipe(item)} 
@@ -68,7 +74,10 @@ export default function HomeScreen({ navigation }: HomeScreenProps) {
         return (
             <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                 {item.map((recipe, index) => (
-                    <View key={`${recipe.uri}-${recipe.label}-${index}`} style={{ flex: 1 }}>
+                    <View 
+                        key={`${recipe.uri}-${recipe.label}-${index}`}
+                        style={{ flex: 1 }}
+                    >
                         {renderItem({ item: recipe })}
                     </View>
                 ))}
@@ -77,7 +86,7 @@ export default function HomeScreen({ navigation }: HomeScreenProps) {
     };
 
     // Create an array of pairs
-    const groupedRecipes: any[][] = [];
+    const groupedRecipes: Recipe[][] = [];
     for (let i = 0; i < recipes.length; i += 2) {
         groupedRecipes.push(recipes.slice(i, i + 2));
     };
@@ -93,7 +102,10 @@ export default function HomeScreen({ navigation }: HomeScreenProps) {
                     value={query}
                     onChangeText={setQuery}
                 />
-                <TouchableOpacity style={[styles.searchButton, {width: '20%'}]} onPress={handleSearch}>
+                <TouchableOpacity style={
+                    [styles.searchButton, {width: '20%'}]}
+                    onPress={handleSearch}
+                >
                     <Text style={{color: 'white'}}>Search</Text>
                 </TouchableOpacity>
             </View>
