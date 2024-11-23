@@ -9,6 +9,7 @@ import {
     Keyboard,
 } from 'react-native';
 import React, { useState } from 'react';
+import { useAuth } from '../context/AuthContext';
 import TopBar from '../components/TopBar';
 import { LoginScreenProps } from '../types/navigationTypes';
 import { loginUser, passwordReset } from '../api/authService';
@@ -21,6 +22,8 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
     const [error, setError] = useState<string | null>(null);
     const [modalVisible, setModalVisible] = useState<boolean>(false);
     const [resetEmail, setResetEmail] = useState<string>('');
+
+    const { login } = useAuth();
 
     // Google and Facebook sign-in will be on hold for now. Change typing if continuing
     const handleGoogleSignIn = (): void => {
@@ -35,7 +38,7 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
 
     const handleLogin = async (): Promise<void> => {
         try {
-            await loginUser(email, password);
+            await loginUser(email, password, login);
             setEmail('');
             setPassword('');
             navigation.navigate('Home');

@@ -9,16 +9,13 @@ import {
 } from 'firebase/auth';
 import { auth, db } from '../../firebaseConfig';
 import { ref, set } from 'firebase/database';
-import { useAuth } from '../context/AuthContext';
 
 type AuthErrorType = AuthError | Error;
-
 
 export const registerUser = async (
     email: string,
     password: string,
     username: string,
-    login: (user: User) => void
 ): Promise<UserCredential> => {
     try {
         const userCredential = await createUserWithEmailAndPassword(
@@ -31,8 +28,6 @@ export const registerUser = async (
           username,
           email,
         });
-
-        login(user);
 
         return userCredential;
     } catch (error) {
