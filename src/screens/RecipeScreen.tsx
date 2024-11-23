@@ -1,15 +1,30 @@
 import { View, Text, TouchableOpacity, Image, Linking, ScrollView } from 'react-native';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TopBar from '../components/TopBar';
 import { Ionicons } from '@expo/vector-icons';
 import { RecipeScreenProps } from '../types/navigationTypes';
 import { useAuth } from '../context/AuthContext';
+import { 
+    addToFavorites,
+    removeFromFavorites,
+    isRecipeFavorited
+} from '../api/favoriteService';
 import styles from '../theme/styles';
 
 export default function RecipeScreen({ navigation, route }: RecipeScreenProps) {
-    const { ingredients, label, image, url } = route.params;
+    const { ingredients, label, image, url, uri } = route.params;
     const [isFavorited, setIsFavorited] = useState(false);
-    const { isLoggedIn } = useAuth();
+    const { user } = useAuth();
+
+    useEffect(() => {
+        if (user) {
+            const checkFavoriteStatus = async () => {
+                const favorited = await isRecipeFavorited(user.uid, uri);
+                setIsFavorited(favorited);
+            };
+            checkFavoriteStatus();
+        }
+    }, [user, uri]);
  
     const handleOpenOutsideSource = () => {
         Linking.openURL(url);
@@ -31,14 +46,25 @@ export default function RecipeScreen({ navigation, route }: RecipeScreenProps) {
         }
     }
     
-    const toggleFavorite = () => {
-        setIsFavorited(!isFavorited);
+    const toggleFavorite = async () => {
+        if (user) {
+            try {
+                if (isFavorited) {
+                    await removeFromFavorites(user.uid, uri);
+                } else {
+                    await addToFavorites(user.uid, uri);
+                }
+                setIsFavorited(!isFavorited);
+            } catch (error) {
+                console.error("Error toggling favorite: ", error);
+            }
+        }
     }
 
     return (
         <View>
             <TopBar navigation={navigation} screenName='Recipe'/>
-            {isLoggedIn && (
+            {user && (
                 <TouchableOpacity onPress={toggleFavorite} style={{ paddingLeft: 10 }}>
                     <Ionicons
                         name={isFavorited ? "star" : "star-outline"} // Filled or outlined star
