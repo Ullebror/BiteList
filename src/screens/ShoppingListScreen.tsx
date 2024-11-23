@@ -16,7 +16,7 @@ import BouncyCheckBox from 'react-native-bouncy-checkbox';
 import styles from '../theme/styles';
 
 export default function ShoppingListScreen({ navigation, route }: ShoppingListScreenProps) {
-    const { ingredients, label } = route.params;
+    const { ingredients, label } = route.params || {};
     const [shoppingList, setShoppingList] = useState(ingredients);
     const [newItem, setNewItem] = useState('');
 
