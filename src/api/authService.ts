@@ -4,10 +4,12 @@ import {
     signOut,
     UserCredential,
     AuthError,
-    sendPasswordResetEmail
+    sendPasswordResetEmail,
+    User
 } from 'firebase/auth';
 import { auth, db } from '../../firebaseConfig';
 import { ref, set } from 'firebase/database';
+import { useAuth } from '../context/AuthContext';
 
 type AuthErrorType = AuthError | Error;
 
@@ -15,7 +17,8 @@ type AuthErrorType = AuthError | Error;
 export const registerUser = async (
     email: string,
     password: string,
-    username: string
+    username: string,
+    login: (user: User) => void
 ): Promise<UserCredential> => {
     try {
         const userCredential = await createUserWithEmailAndPassword(
@@ -29,6 +32,8 @@ export const registerUser = async (
           email,
         });
 
+        login(user);
+
         return userCredential;
     } catch (error) {
         console.error('Registration error: ', error);
@@ -38,7 +43,8 @@ export const registerUser = async (
 
 export const loginUser = async (
     email: string,
-    password: string
+    password: string,
+    login: (user: User) => void
 ): Promise<UserCredential> => {
     try {
         const userCredential = await signInWithEmailAndPassword(
@@ -46,6 +52,10 @@ export const loginUser = async (
             email,
             password
         );
+
+        const user = userCredential.user;
+        login(user);
+
         return userCredential;
     } catch (error) {
         console.error('Login error: ', error);
@@ -53,9 +63,12 @@ export const loginUser = async (
     }
 };
 
-export const logoutUser = async (): Promise<void> => {
+export const logoutUser = async (
+        logout: () => void
+    ): Promise<void> => {
     try {
         await signOut(auth);
+        logout();
     } catch (error) {
         console.error('Logout error: ', error);
         throw error as AuthErrorType;
