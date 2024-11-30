@@ -5,10 +5,10 @@ import containers from './containers';
 import modals from './modals';
 
 const styles = StyleSheet.create({
-    ...texts,
-    ...buttons,
-    ...containers,
-    ...modals,
+  ...texts,
+  ...buttons,
+  ...containers,
+  ...modals,
 });
 
 export default styles;
