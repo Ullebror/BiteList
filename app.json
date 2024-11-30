@@ -13,15 +13,9 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "ios": {
-        "newArchEnabled": true
-      },
       "supportsTablet": true
     },
     "android": {
-      "android": {
-        "newArchEnabled": true
-      },
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
