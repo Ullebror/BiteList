@@ -3,12 +3,20 @@ import pluginJs from '@eslint/js';
 import pluginTs from '@typescript-eslint/eslint-plugin';
 import pluginReact from 'eslint-plugin-react';
 import pluginPrettier from 'eslint-plugin-prettier';
+import parserTs from '@typescript-eslint/parser';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
 /** @type {import('eslint').Linter.Config} */
 export default {
-  files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
+  files: ['src/**/*.{js,mjs,cjs,ts,jsx,tsx}'],
   languageOptions: {
+    parser: parserTs,
     globals: globals.browser,
+    parserOptions: {
+      project: './tsconfig.json',
+      tsconfigRootDir: dirname(fileURLToPath(import.meta.url)),
+    },
   },
   plugins: {
     '@typescript-eslint': pluginTs,

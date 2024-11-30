@@ -11,5 +11,12 @@
         "baseUrl": "./"
       },
       "include": ["src/**/*", "App.tsx", "metro.config.*"],
-      "exclude": ["node_modules", "babel.config.js"]
+      "exclude": [
+    "node_modules",
+    "babel.config.js",
+    "eslint.config.mjs",
+    ".eslintrc.js", // Ensure this is excluded here
+    "**/*.test.js", // Optional: Exclude test files if needed
+    "**/*.spec.js" // Optional: Exclude spec files if needed
+    ]
   }

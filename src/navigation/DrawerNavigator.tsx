@@ -10,7 +10,6 @@ import ShoppingListScreen from '../screens/ShoppingListScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import CustomDrawerContent from './customDrawerContent';
 
-
 const Drawer = createDrawerNavigator<DrawerParamList>();
 const DrawerNavigator = () => {
   return (
@@ -25,7 +24,7 @@ const DrawerNavigator = () => {
       <Drawer.Screen name="Login" component={LoginScreen} />
       <Drawer.Screen name="Favourites" component={FavouritesScreen} />
       <Drawer.Screen name="Recipe" component={RecipeScreen} />
-      <Drawer.Screen name='ShoppingList' component={ShoppingListScreen} />
+      <Drawer.Screen name="ShoppingList" component={ShoppingListScreen} />
       <Drawer.Screen name="Profile" component={ProfileScreen} />
     </Drawer.Navigator>
   );

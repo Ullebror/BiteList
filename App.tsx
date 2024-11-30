@@ -3,7 +3,6 @@ import { AuthProvider } from './src/context/AuthContext';
 import React from 'react';
 import DrawerNavigator from './src/navigation/DrawerNavigator';
 
-
 export default function App() {
   return (
     <AuthProvider>
@@ -11,6 +10,5 @@ export default function App() {
         <DrawerNavigator />
       </NavigationContainer>
     </AuthProvider>
-    
   );
 }
