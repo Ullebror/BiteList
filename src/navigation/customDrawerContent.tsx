@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
+import {
+  DrawerContentScrollView,
+  DrawerItem,
+  DrawerContentComponentProps,
+} from '@react-navigation/drawer';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth } from '../../firebaseConfig';
-import { DrawerNavigationProp } from '@react-navigation/drawer';
-import { DrawerParamList } from '../types/navigationTypes';
 
-type CustomDrawerContentProps = {
-  navigation: DrawerNavigationProp<DrawerParamList>;
-};
-
-const CustomDrawerContent = ({ navigation }: CustomDrawerContentProps) => {
+const CustomDrawerContent = ({ navigation }: DrawerContentComponentProps) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
@@ -34,7 +32,7 @@ const CustomDrawerContent = ({ navigation }: CustomDrawerContentProps) => {
       <DrawerItem label="Home" onPress={() => navigation.navigate('Home')} />
       <DrawerItem
         label="Shopping List"
-        onPress={() => navigation.navigate('ShoppingList')}
+        onPress={() => navigation.navigate('ShoppingList', {})}
       />
 
       {!isAuthenticated && (
