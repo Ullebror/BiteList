@@ -46,6 +46,13 @@ export default function ShoppingListScreen({
   }, [userId, ingredients]);
 
   useEffect(() => {
+    if (!userId) {
+      // Clear the shopping list from the UI when the user logs out
+      setShoppingList([]);
+    }
+  }, [userId]); // Trigger this effect when userId changes
+
+  useEffect(() => {
     if (mergeDialogVisible) {
       Alert.alert(
         'Merge List?',
@@ -79,6 +86,7 @@ export default function ShoppingListScreen({
         setMergeDialogVisible(true); // Show the merge dialog
       } else {
         saveShoppingListToFirebase(ingredients);
+        setShoppingList(ingredients);
       }
     } else {
       // If the user is not logged in, just add the recipe ingredients
