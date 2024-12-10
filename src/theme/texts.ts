@@ -55,6 +55,12 @@ const texts = StyleSheet.create({
     textAlign: 'center',
     marginVertical: 20,
   },
+  cardText: {
+    padding: 10,
+    textAlign: 'center',
+    fontWeight: 'bold',
+    color: colors.gray.shade400,
+  },
 });
 
 export default texts;

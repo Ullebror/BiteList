@@ -39,6 +39,18 @@ const buttons = StyleSheet.create({
   favourited: {
     color: colors.orange.shade200,
   },
+  touchableImage: {
+    flex: 1,
+    margin: 5,
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.2,
+    shadowRadius: 1.5,
+    overflow: 'hidden',
+  },
 });
 
 export default buttons;

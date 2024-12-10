@@ -42,33 +42,14 @@ export default function HomeScreen({ navigation }: HomeScreenProps) {
     return (
       <TouchableOpacity
         onPress={() => navigateToRecipe(item)}
-        style={{
-          flex: 1,
-          margin: 5,
-          backgroundColor: '#fff', // Card background color
-          borderRadius: 10, // Rounded corners
-          elevation: 2, // For Android shadow effect
-          shadowColor: '#000', // For iOS shadow color
-          shadowOffset: { width: 0, height: 1 }, // Shadow offset
-          shadowOpacity: 0.2, // Shadow opacity
-          shadowRadius: 1.5, // Shadow blur radius
-          overflow: 'hidden', // Ensure contents don't overflow
-        }}
+        style={styles.touchableImage}
       >
         <Image
           source={{ uri: item.image }}
           style={{ width: '100%', height: 150 }} // Adjust height as needed
           resizeMode="cover"
         />
-        <Text
-          style={{
-            padding: 10, // Padding around text
-            textAlign: 'center',
-            fontWeight: 'bold', // Make the text bold
-          }}
-        >
-          {item.label}
-        </Text>
+        <Text style={styles.cardText}>{item.label}</Text>
       </TouchableOpacity>
     );
   };
